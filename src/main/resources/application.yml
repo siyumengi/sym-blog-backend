@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: springboot-init
+  #
+  profiles:
+    active: dev
+
+  #
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog
+    username: root
+    password: 1438250jzh
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  address: 0.0.0.0
+  port: 8000
+  servlet:
+    context-path: /api
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.sym.bolgbackend.controller
+
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# Logger Config
+logging:
+  level:
+    com.hexadecimal: debug
