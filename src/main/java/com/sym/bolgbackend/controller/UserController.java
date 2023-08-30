@@ -47,6 +47,11 @@ public class UserController {
         return ResultUtils.success(res);
     }
 
+    /**
+     * 用户登录
+     * @param userLogin
+     * @return
+     */
     @PostMapping("/login")
     public BaseResponse<UserVo> userLogin(@RequestBody UserLogin userLogin) {
 

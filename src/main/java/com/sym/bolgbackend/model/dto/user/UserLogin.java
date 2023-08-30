@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @date 2023/8/28
  */
 @Data
-public class UserLogin {
+public class UserLogin implements Serializable{
 
 
     /**
