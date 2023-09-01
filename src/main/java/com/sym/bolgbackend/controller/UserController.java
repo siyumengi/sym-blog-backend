@@ -10,6 +10,7 @@ import com.sym.bolgbackend.model.dto.user.UserRegister;
 import com.sym.bolgbackend.model.vo.UserVo;
 import com.sym.bolgbackend.service.UserService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/login")
-    public BaseResponse<UserVo> userLogin(@RequestBody UserLogin userLogin) {
+    public BaseResponse<UserVo> userLogin(@RequestBody UserLogin userLogin , HttpServletRequest request) {
 
         if (userLogin == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -67,7 +68,7 @@ public class UserController {
         if (StringUtils.isAnyBlank(userAccount, userPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
-        UserVo res = userService.userLogin(userAccount, userPassword);
+        UserVo res = userService.userLogin(userAccount, userPassword ,request);
         return ResultUtils.success(res);
     }
 }
